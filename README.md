@@ -29,8 +29,15 @@
 - [第3章-4：実践的ワークフローコード詳解（応用編）](doc/cicd/03-4_practical_workflow_code_advanced.md)
 - [第3章-5：CI/CD実装戦略とベストプラクティス](doc/cicd/03-5_cicd_implementation_strategy.md)
 
-### 第4章：GitHub Actions キャッシュ機能 完全ガイド
-- [第4章：GitHub Actions キャッシュ機能 完全ガイド](doc/cicd/04_github_actions_cache_guide.md)
+### 第4章：pythonのユニットテストをCIしてみた
+- [第4章-1：Pythonユニットテストの概念と価値](doc/cicd/04-1_python_unittest_concept.md)
+- [第4章-2：パスワードチェッカーの要件定義と分析](doc/cicd/04-2_password_checker_requirements.md)
+- [第4章-3：実装コードとテストコードの詳細解説](doc/cicd/04-3_implementation_detailed_analysis.md)
+- [第4章-4：ローカルでのテスト実行と検証](doc/cicd/04-4_local_testing_execution.md)
+- [第4章-5：CI自動化戦略とワークフロー詳解](doc/cicd/04-5_ci_automation_strategy.md)
+
+### 第5章：GitHub Actions キャッシュ機能 完全ガイド
+- [第5章：GitHub Actions キャッシュ機能 完全ガイド](doc/cicd/04_github_actions_cache_guide.md)
 
 ## 🛠️ 実装内容
 
