@@ -8,10 +8,12 @@ hypothesis>=6.82.0          # プロパティベーステスト
 # Code quality
 flake8>=6.0.0
 black>=23.0.0
+isort>=5.12.0               # インポート順序管理
 
 # Security
 bandit>=1.7.5
 pip-audit>=2.9.0            # safetyの代替ツール
+setuptools>=80.9.0          # 脆弱性修正版
 
 # Type checking
 mypy>=1.5.0
