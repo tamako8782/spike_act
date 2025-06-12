@@ -1,16 +1,20 @@
 import pytest
 from password_checker import is_valid_password
 
+
 class TestPasswordChecker:
     """パスワードチェッカーのテストスイート"""
 
-    @pytest.mark.parametrize("password", [
-        "Passsssssword123!",
-        "Aa1234567890!",
-        "P@ssw0rddddd!",
-        "Tanaka1234!",
-        "taeawgaeA3a-ha"
-    ])
+    @pytest.mark.parametrize(
+        "password",
+        [
+            "Passsssssword123!",
+            "Aa1234567890!",
+            "P@ssw0rddddd!",
+            "Tanaka1234!",
+            "taeawgaeA3a-ha",
+        ],
+    )
     @pytest.mark.unit
     def test_valid_password(self, password):
         """有効なパスワードのテスト"""
@@ -18,21 +22,24 @@ class TestPasswordChecker:
         assert is_valid is True
         assert message is None
 
-    @pytest.mark.parametrize("password,expected_message", [
-        ("", "空文字です"),
-        ("1234567", "パスワードは8〜20文字以内にしてください"),
-        ("12345678901234567890!!!!aAA", "パスワードは8〜20文字以内にしてください"),
-        ("RAONANAFAA!4", "パスワードには英小文字を含めてください"),
-        ("ganaitanga!4", "パスワードには英大文字を含めてください"),
-        ("ahatoionaahFAA!", "パスワードには数字を含めてください"),
-        ("RAONatahtaha4", "パスワードには記号を含めてください"),
-        ("RAONANA   aaaFAA!4", "パスワードにはスペースを含めないでください"),
-        ("administrator", "安全性の低いパスワードです"),
-        ("password", "安全性の低いパスワードです"),
-        ("default", "安全性の低いパスワードです"),
-        ("qwerty", "安全性の低いパスワードです"),
-        ("letmein", "安全性の低いパスワードです"),
-    ])
+    @pytest.mark.parametrize(
+        "password,expected_message",
+        [
+            ("", "空文字です"),
+            ("1234567", "パスワードは8〜20文字以内にしてください"),
+            ("12345678901234567890!!!!aAA", "パスワードは8〜20文字以内にしてください"),
+            ("RAONANAFAA!4", "パスワードには英小文字を含めてください"),
+            ("ganaitanga!4", "パスワードには英大文字を含めてください"),
+            ("ahatoionaahFAA!", "パスワードには数字を含めてください"),
+            ("RAONatahtaha4", "パスワードには記号を含めてください"),
+            ("RAONANA   aaaFAA!4", "パスワードにはスペースを含めないでください"),
+            ("administrator", "安全性の低いパスワードです"),
+            ("password", "安全性の低いパスワードです"),
+            ("default", "安全性の低いパスワードです"),
+            ("qwerty", "安全性の低いパスワードです"),
+            ("letmein", "安全性の低いパスワードです"),
+        ],
+    )
     @pytest.mark.unit
     def test_invalid_password(self, password, expected_message):
         """無効なパスワードのテスト"""
@@ -56,7 +63,7 @@ class TestPasswordChecker:
             "'; DROP TABLE users; --",
             "' OR '1'='1",
             "admin'--",
-            "' UNION SELECT * FROM users--"
+            "' UNION SELECT * FROM users--",
         ]
         for pattern in sql_injection_patterns:
             is_valid, message = is_valid_password(pattern)
