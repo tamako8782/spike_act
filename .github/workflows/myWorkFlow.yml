@@ -2,7 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ master, feature/* ]  # featureブランチも含める
+    branches: [ master ]  # masterのみ、featureは冗長
   pull_request:
     branches: [ master ]
 
@@ -43,8 +43,9 @@ jobs:
         pip-audit
     - name: Run code formatting checks
       run: |
-        black . --check
-        # isort . --check-only --settings-path=pyproject.toml --profile=black  # 一時的に無効化
+        black . --check --diff
+    - name: Check import formatting with isort
+      run: isort . --check-only --settings-path=pyproject.toml --profile=black
     - name: Run type checking
       run: |
         mypy .
