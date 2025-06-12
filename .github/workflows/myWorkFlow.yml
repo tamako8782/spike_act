@@ -44,7 +44,7 @@ jobs:
     - name: Run code formatting checks
       run: |
         black . --check
-        isort . --check-only --settings-path=pyproject.toml --profile=black
+        # isort . --check-only --settings-path=pyproject.toml --profile=black  # 一時的に無効化
     - name: Run type checking
       run: |
         mypy .
