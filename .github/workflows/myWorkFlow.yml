@@ -36,6 +36,7 @@ jobs:
       with:
         file: ./coverage.xml
         fail_ci_if_error: true
+        token: ${{ secrets.COVSEC }}
     - name: Run security checks
       run: |
         bandit -r . -c .bandit
