@@ -68,7 +68,9 @@ class TestPasswordChecker:
         ]
         for pattern in sql_injection_patterns:
             is_valid, message = is_valid_password(pattern)
-            assert is_valid is False, f"SQLインジェクションパターンが検出されませんでした: {pattern}"
+            assert (
+                is_valid is False
+            ), f"SQLインジェクションパターンが検出されませんでした: {pattern}"
 
     @pytest.mark.unit
     def test_boundary_conditions(self):
