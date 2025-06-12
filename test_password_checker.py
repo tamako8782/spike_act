@@ -1,4 +1,5 @@
 import pytest
+
 from password_checker import is_valid_password
 
 
