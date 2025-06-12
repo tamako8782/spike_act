@@ -1,4 +1,4 @@
-name: My WorkFlow
+name: CI/CD Pipeline
 
 on:
   push:
@@ -28,11 +28,26 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-
-    - name: Run tests
+    - name: Run pytest with coverage
       run: |
-        python -m unittest discover -v
-    - name: Run flake8
+        pytest --cov=. --cov-report=xml --cov-report=term-missing
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        fail_ci_if_error: true
+    - name: Run security checks
+      run: |
+        bandit -r . -c .bandit
+        pip-audit
+    - name: Run code formatting checks
+      run: |
+        black . --check
+        isort . --check-only
+    - name: Run type checking
+      run: |
+        mypy .
+    - name: Run linting
       run: |
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
